@@ -1,0 +1,43 @@
+.grid-central {
+  display: grid;
+  align-items: center;
+  min-height: 100vh;
+}
+.logo {
+  justify-self: center;
+}
+.formulario-entrada {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 15px;
+  padding: 0px 15px;
+}
+.formulario-entrada input {
+  grid-column: 1/-1;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(39, 39, 39, 0.5);
+}
+.esqueceuSenha {
+  grid-column: 2;
+  border: none;
+  text-align: end;
+  background: #fff;
+}
+.entrar {
+  grid-column: 1/-1;
+  border-radius: 12px;
+  background: #f79e89;
+  padding: 16px 0px;
+  color: #fff;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+.cadastroTexto {
+  grid-column: 1/-1;
+  text-align: center;
+}
+.cadastroDetalhe {
+  color: #f79e89;
+}
