@@ -1,7 +1,8 @@
 .grid-central {
   display: grid;
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
 }
 .logo {
   justify-self: center;
