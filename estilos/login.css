@@ -6,13 +6,13 @@
 .logo {
   justify-self: center;
 }
-.formulario-entrada {
+.formulario {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 15px;
   padding: 0px 15px;
 }
-.formulario-entrada input {
+.formulario input {
   grid-column: 1/-1;
   padding: 20px;
   border-radius: 12px;
@@ -53,4 +53,15 @@
 .cadastroDetalhe {
   color: #f79e89;
   cursor: pointer;
+}
+/*Formulário de cadastro*/
+.formulario.cadastro {
+  display: none;
+}
+/*interação com js*/
+.formulario.displayNone {
+  display: none !important;
+}
+.formulario.displayblock {
+  display: grid !important;
 }
