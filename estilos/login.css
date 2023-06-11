@@ -54,6 +54,15 @@
   color: #f79e89;
   cursor: pointer;
 }
+@media (orientation: landscape) {
+  .aviso {
+    display: grid !important;
+  }
+  body {
+    overflow: hidden;
+  }
+}
+
 /*Formulário de cadastro*/
 .formulario.cadastro {
   display: none;

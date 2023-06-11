@@ -10,13 +10,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        .aviso {
+            display: none;
+            position: absolute;
+            width: 100%;
+            min-height: 100vh;
+            color: white;
+            background-color: white;
+        }
+
+        .aviso h1 {
+            border-radius: 10px;
+            padding: 10px 0px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            background-color: #f79e89;
+            align-self: center;
+            text-align: center;
+        }
+    </style>
 </head>
 
 <body>
+    <div class="aviso">
+        <h1>Não vire o dispositivo !!</h1>
+    </div>
     <div class="grid-central">
-
         <img src="icons/Union.svg" alt="Logo" class="logo">
-
         <form action="" method="get" class="formulario">
             <input type="email" name="email" id="email" placeholder="Email" required>
             <input type="password" name="senha" id="senha" placeholder="Senha">
@@ -24,7 +45,6 @@
             <button type="submit" class="entrar">Entrar</button>
             <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe">Crie uma</span></p>
         </form>
-
         <form action="" method="get" class="formulario cadastro">
             <input type="email" name="email" id="emailCadastro" placeholder="Email" required>
             <input type="text" name="nome" id="nomeCadastro" placeholder="Nome">

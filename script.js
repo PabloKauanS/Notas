@@ -38,7 +38,7 @@ function verificarSenha(item, senha) {
 //Trocar Formulário
 const botao = document.querySelectorAll(".cadastroDetalhe");
 botao.forEach((item) => {
-  item.addEventListener("click", (e) => {
+  item.addEventListener("click", () => {
     formularioEntrada.classList.toggle("displayNone");
     formularioCadastro.classList.toggle("displayblock");
   });
