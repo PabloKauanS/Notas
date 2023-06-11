@@ -16,6 +16,7 @@
             position: absolute;
             width: 100%;
             min-height: 100vh;
+            padding: 100px 30px;
             color: white;
             background-color: white;
         }
@@ -26,7 +27,6 @@
             font-family: "Montserrat", sans-serif;
             font-weight: 500;
             background-color: #f79e89;
-            align-self: center;
             text-align: center;
         }
     </style>
@@ -40,16 +40,16 @@
         <img src="icons/Union.svg" alt="Logo" class="logo">
         <form action="" method="get" class="formulario">
             <input type="email" name="email" id="email" placeholder="Email" required>
-            <input type="password" name="senha" id="senha" placeholder="Senha">
+            <input type="password" name="senha" id="senha" placeholder="Senha" required>
             <button class="esqueceuSenha">Esqueceu a senha ?</button>
             <button type="submit" class="entrar">Entrar</button>
             <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe">Crie uma</span></p>
         </form>
         <form action="" method="get" class="formulario cadastro">
             <input type="email" name="email" id="emailCadastro" placeholder="Email" required>
-            <input type="text" name="nome" id="nomeCadastro" placeholder="Nome">
-            <input type="password" name="senha" id="senhaCadastro" placeholder="Senha">
-            <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha">
+            <input type="text" name="nome" id="nomeCadastro" placeholder="Nome" required>
+            <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required>
+            <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required>
             <button type="submit" class="entrar">Cadastrar</button>
             <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe">Entrar</span></p>
         </form>
