@@ -59,17 +59,19 @@ function formularioCadastroBtn() {
 function popUp(mensagem, objetofilho) {
   const aviso = document.querySelector(".aviso").cloneNode(true);
   const titulo = aviso.querySelector(".titulo");
+  const avisoElement = document.querySelector(".alertaJs");
   aviso.classList = "alertaJs slide-in-top";
   titulo.classList = "popupJs";
   titulo.innerText = mensagem;
-  document
-    .querySelector(objetofilho)
-    .parentNode.insertBefore(aviso, document.querySelector(objetofilho));
-  const avisoElement = document.querySelector(".alertaJs");
-  setTimeout(() => {
-    avisoElement.classList.replace("slide-in-top", "slide-out-top");
-  }, 2000);
-  setTimeout(() => {
-    avisoElement.remove();
-  }, 2300);
+  if (!avisoElement) {
+    document
+      .querySelector(objetofilho)
+      .parentNode.insertBefore(aviso, document.querySelector(objetofilho));
+    setTimeout(() => {
+      aviso.classList.replace("slide-in-top", "slide-out-top");
+    }, 2000);
+    setTimeout(() => {
+      aviso.remove();
+    }, 2300);
+  }
 }
