@@ -7,7 +7,7 @@ formularioEntrada.addEventListener("submit", (e) => {
   if (dados) {
     verificarDados(dados, email, senha);
   } else {
-    popUp("Nenhum email cadastrado", ".grid-central");
+    popUp("Nenhum email cadastrado");
   }
 
   e.preventDefault();
@@ -19,21 +19,21 @@ function verificarDados(dados, email, senha) {
   if (resultado) {
     verificarSenha(resultado, senha);
   } else {
-    popUp("Email não encontrado", ".grid-central");
+    popUp("Email não encontrado");
   }
 }
 function verificarSenha(item, senha) {
   if (senha === item.senha) {
     document.location.href = "home.html";
   } else {
-    popUp("Senha incorreta", ".grid-central");
+    popUp("Senha incorreta");
   }
 }
 const formularioCadastro = document.querySelector(".formulario.cadastro");
 formularioCadastro.addEventListener("submit", cadastro);
 function cadastro(e) {
   e.preventDefault();
-  popUp("Cadastro indisponível", ".grid-central");
+  popUp("Cadastro indisponível");
 }
 //Animação formulario
 function formularioEntradaBtn() {
@@ -56,22 +56,19 @@ function formularioCadastroBtn() {
 }
 
 //Pop up
-function popUp(mensagem, objetofilho) {
-  const aviso = document.querySelector(".aviso").cloneNode(true);
-  const titulo = aviso.querySelector(".titulo");
+function popUp(mensagem) {
   const avisoElement = document.querySelector(".alertaJs");
-  aviso.classList = "alertaJs slide-in-top";
-  titulo.classList = "popupJs";
-  titulo.innerText = mensagem;
   if (!avisoElement) {
-    document
-      .querySelector(objetofilho)
-      .parentNode.insertBefore(aviso, document.querySelector(objetofilho));
+    const elementoAviso = `<div class='alertaJs slide-in-top'><h2 class='popupJs'>${mensagem}!!</h2></div>`;
+    const gridCentral = document.querySelector(".grid-central");
+    gridCentral.insertAdjacentHTML("beforebegin", elementoAviso);
+
     setTimeout(() => {
-      aviso.classList.replace("slide-in-top", "slide-out-top");
-    }, 2000);
-    setTimeout(() => {
-      aviso.remove();
-    }, 2300);
+      const elementoNoDom = document.querySelector(".alertaJs");
+      elementoNoDom.classList.replace("slide-in-top", "slide-out-top");
+      elementoNoDom.addEventListener("animationend", () =>
+        elementoNoDom.remove()
+      );
+    }, 1000);
   }
 }

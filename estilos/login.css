@@ -2,6 +2,8 @@
   display: grid;
   align-items: center;
   height: 100%;
+  max-width: 700px;
+  margin: 0 auto;
   overflow: hidden;
 }
 .logo {
@@ -54,9 +56,4 @@
 .cadastroDetalhe {
   color: #f79e89;
   cursor: pointer;
-}
-@media (orientation: landscape) {
-  .aviso {
-    display: block !important;
-  }
 }
