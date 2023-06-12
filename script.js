@@ -35,14 +35,26 @@ function cadastro(e) {
   e.preventDefault();
   popUp("Cadastro indisponível", ".grid-central");
 }
-//Trocar Formulário
-const botao = document.querySelectorAll(".cadastroDetalhe");
-botao.forEach((item) => {
-  item.addEventListener("click", () => {
-    formularioEntrada.classList.toggle("displayNonejs");
-    formularioCadastro.classList.toggle("displayblockjs");
-  });
-});
+//Animação formulario
+function formularioEntradaBtn() {
+  formularioEntrada.classList.add("slide-out-left");
+  setTimeout((i) => {
+    formularioEntrada.style.display = "none";
+    formularioEntrada.classList.remove("slide-out-left");
+    formularioCadastro.style.display = "grid";
+    formularioCadastro.classList.add("slide-in-right");
+  }, 300);
+}
+function formularioCadastroBtn() {
+  formularioCadastro.classList.add("slide-out-left");
+  setTimeout((i) => {
+    formularioCadastro.style.display = "none";
+    formularioCadastro.classList.remove("slide-out-left");
+    formularioEntrada.style.display = "grid";
+    formularioEntrada.classList.add("slide-in-right");
+  }, 300);
+}
+
 //Pop up
 function popUp(mensagem, objetofilho) {
   const aviso = document.querySelector(".aviso").cloneNode(true);
@@ -53,12 +65,11 @@ function popUp(mensagem, objetofilho) {
   document
     .querySelector(objetofilho)
     .parentNode.insertBefore(aviso, document.querySelector(objetofilho));
+  const avisoElement = document.querySelector(".alertaJs");
   setTimeout(() => {
-    document
-      .querySelector(".alertaJs")
-      .classList.replace("slide-in-top", "slide-out-top");
+    avisoElement.classList.replace("slide-in-top", "slide-out-top");
   }, 2000);
   setTimeout(() => {
-    document.querySelector(".alertaJs").remove();
+    avisoElement.remove();
   }, 2300);
 }

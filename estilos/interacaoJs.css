@@ -2,13 +2,7 @@
   display: none;
 }
 /*interação com js*/
-.formulario.displayNonejs {
-  display: none !important;
-}
-.formulario.displayblockjs {
-  display: grid !important;
-  animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
+
 .alertaJs {
   text-align: center;
   background-color: #f79e89;
@@ -22,8 +16,14 @@
   font-family: "Montserrat", sans-serif;
 }
 .slide-in-top {
-  animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .slide-out-top {
-  animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+  animation: slide-out-top 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+.slide-in-right {
+  animation: slide-in-right 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.slide-out-left {
+  animation: slide-out-left 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }

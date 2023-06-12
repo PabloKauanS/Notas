@@ -12,7 +12,6 @@
   grid-template-columns: repeat(2, 1fr);
   row-gap: 15px;
   padding: 0px 15px;
-  animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 .formulario input {
   grid-column: 1/-1;

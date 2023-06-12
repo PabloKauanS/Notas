@@ -21,6 +21,7 @@
             background-color: white;
             z-index: 1;
         }
+
         .aviso .titulo {
             border-radius: 10px;
             padding: 10px 0px;
@@ -34,7 +35,7 @@
 
 <body>
     <div class="aviso">
-        <h1 class="titulo">Não vire o dispositivo !!</h1>
+        <h2 class="titulo">Não vire o dispositivo !!</h2>
     </div>
     <div class="grid-central">
         <img src="icons/Union.svg" alt="Logo" class="logo">
@@ -43,7 +44,7 @@
             <input type="password" name="senha" id="senha" placeholder="Senha" required>
             <button class="esqueceuSenha">Esqueceu a senha ?</button>
             <button type="submit" class="entrar">Entrar</button>
-            <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe">Crie uma</span></p>
+            <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe" onclick="formularioEntradaBtn()">Crie uma</span></p>
         </form>
         <form action="" method="get" class="formulario cadastro">
             <input type="email" name="email" id="emailCadastro" placeholder="Email" required>
@@ -51,7 +52,7 @@
             <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required>
             <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required>
             <button type="submit" class="entrar">Cadastrar</button>
-            <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe">Entrar</span></p>
+            <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe" onclick="formularioCadastroBtn()">Entrar</span></p>
         </form>
     </div>
     <script src="script.js"></script>
