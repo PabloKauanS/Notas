@@ -36,33 +36,23 @@ function cadastro(e) {
   popUp("Cadastro indisponível");
 }
 //Animação formulario
-function formularioEntradaBtn() {
-  formularioEntrada.classList.add("slide-out-left");
-  setTimeout((i) => {
-    formularioEntrada.style.display = "none";
-    formularioEntrada.classList.remove("slide-out-left");
-    formularioCadastro.style.display = "grid";
-    formularioCadastro.classList.add("slide-in-right");
+function trocarForm(primeiroForm, proximoForm) {
+  const atual = document.querySelector(primeiroForm);
+  const proximo = document.querySelector(proximoForm);
+  atual.classList.add("slide-out-left");
+  setTimeout(() => {
+    atual.classList.remove("slide-out-left");
+    atual.style.display = "none";
+    proximo.classList.add("slide-in-right");
+    proximo.style.display = "grid";
   }, 300);
 }
-function formularioCadastroBtn() {
-  formularioCadastro.classList.add("slide-out-left");
-  setTimeout((i) => {
-    formularioCadastro.style.display = "none";
-    formularioCadastro.classList.remove("slide-out-left");
-    formularioEntrada.style.display = "grid";
-    formularioEntrada.classList.add("slide-in-right");
-  }, 300);
-}
-
-//Pop up
 function popUp(mensagem) {
   const avisoElement = document.querySelector(".alertaJs");
   if (!avisoElement) {
     const elementoAviso = `<div class='alertaJs slide-in-top'><h2 class='popupJs'>${mensagem}!!</h2></div>`;
     const gridCentral = document.querySelector(".grid-central");
     gridCentral.insertAdjacentHTML("beforebegin", elementoAviso);
-
     setTimeout(() => {
       const elementoNoDom = document.querySelector(".alertaJs");
       elementoNoDom.classList.replace("slide-in-top", "slide-out-top");
