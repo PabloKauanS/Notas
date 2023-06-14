@@ -1,36 +1,29 @@
-const formularioEntrada = document.querySelector(".formulario");
-formularioEntrada.addEventListener("submit", (e) => {
+//Form Login
+document.querySelector(".formulario").addEventListener("submit", (e) => {
+  e.preventDefault();
   const email = document.querySelector("#email").value.toLowerCase();
   const senha = document.querySelector("#senha").value;
-  const dados = JSON.parse(localStorage.getItem("dados"));
-
-  if (dados) {
-    verificarDados(dados, email, senha);
-  } else {
+  const dados =
+    JSON.parse(localStorage.getItem("dados")) ||
     popUp("Nenhum email cadastrado");
+  if (dados) {
+    const emailCadastrado =
+      dados.find((item) => email === item.email) ||
+      popUp("Email não cadastrado");
+    if (emailCadastrado) {
+      if (senha === emailCadastrado.senha) {
+        window.location.href = "home.html";
+      } else {
+        popUp("Senha incorreta");
+      }
+    }
   }
-
-  e.preventDefault();
 });
-function verificarDados(dados, email, senha) {
-  const resultado = dados.find((item) => {
-    return email === item.email;
-  });
-  if (resultado) {
-    verificarSenha(resultado, senha);
-  } else {
-    popUp("Email não encontrado");
-  }
-}
-function verificarSenha(item, senha) {
-  if (senha === item.senha) {
-    document.location.href = "home.html";
-  } else {
-    popUp("Senha incorreta");
-  }
-}
-const formularioCadastro = document.querySelector(".formulario.cadastro");
-formularioCadastro.addEventListener("submit", cadastro);
+
+//Form Cadastro
+document
+  .querySelector(".formulario.cadastro")
+  .addEventListener("submit", cadastro);
 function cadastro(e) {
   e.preventDefault();
   popUp("Cadastro indisponível");
@@ -47,6 +40,7 @@ function trocarForm(primeiroForm, proximoForm) {
     proximo.style.display = "grid";
   }, 300);
 }
+//popUp
 function popUp(mensagem) {
   const avisoElement = document.querySelector(".alertaJs");
   if (!avisoElement) {
@@ -59,6 +53,6 @@ function popUp(mensagem) {
       elementoNoDom.addEventListener("animationend", () =>
         elementoNoDom.remove()
       );
-    }, 1000);
+    }, 2000);
   }
 }
