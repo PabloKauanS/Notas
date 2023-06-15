@@ -12,6 +12,7 @@
 .formulario {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  position: relative;
   row-gap: 15px;
   padding: 0px 15px;
 }
@@ -56,4 +57,18 @@
 .cadastroDetalhe {
   color: #f79e89;
   cursor: pointer;
+}
+.senha {
+  content: url(/icons/eye-off.svg);
+  position: absolute;
+  color: red;
+  height: 24px;
+  width: 24px;
+  right: 28px;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  top: 90px;
+}
+.formulario.cadastro .senha {
+  top: 162px;
 }

@@ -17,16 +17,18 @@
         <img src="icons/Union.svg" alt="Logo" class="logo">
         <form action="" method="get" class="formulario">
             <input type="email" name="email" id="email" placeholder="Email" required>
-            <input type="password" name="senha" id="senha" placeholder="Senha" required>
+            <span for="senha" class="senha"></span>
+            <input type="password" name="senha" id="senha" placeholder="Senha" required minlength="6">
             <button class="esqueceuSenha" disabled>Esqueceu a senha ?</button>
             <button type="submit" class="entrar">Entrar</button>
             <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formulario','.formulario.cadastro')">Crie uma</span></p>
         </form>
         <form action="" method="get" class="formulario cadastro">
             <input type="email" name="email" id="emailCadastro" placeholder="Email" required>
-            <input type="text" name="nome" id="nomeCadastro" placeholder="Nome" required>
-            <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required>
-            <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required>
+            <input type="text" name="nome" id="nomeCadastro" placeholder="Nome" required pattern="^[a-zA-ZÀ-ÿ\s]+$">
+            <span class="senha"></span>
+            <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required minlength="6">
+            <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required minlength="6">
             <button type="submit" class="entrar">Cadastrar</button>
             <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formulario.cadastro','.formulario')">Entrar</span></p>
         </form>

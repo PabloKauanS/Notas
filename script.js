@@ -5,28 +5,27 @@ document.querySelector(".formulario").addEventListener("submit", (e) => {
   const senha = document.querySelector("#senha").value;
   const dados =
     JSON.parse(localStorage.getItem("dados")) ||
-    popUp("Nenhum email cadastrado");
+    popUp("Nenhum email cadastrado", 2000);
   if (dados) {
     const emailCadastrado =
       dados.find((item) => email === item.email) ||
-      popUp("Email não cadastrado");
+      popUp("Email não cadastrado", 1700);
     if (emailCadastrado) {
       if (senha === emailCadastrado.senha) {
         window.location.href = "home.html";
       } else {
-        popUp("Senha incorreta");
+        popUp("Senha incorreta", 1700);
       }
     }
   }
 });
-
 //Form Cadastro
 document
   .querySelector(".formulario.cadastro")
   .addEventListener("submit", cadastro);
 function cadastro(e) {
   e.preventDefault();
-  popUp("Cadastro indisponível");
+  popUp("Cadastro indisponível",1700);
 }
 //Animação formulario
 function trocarForm(primeiroForm, proximoForm) {
@@ -41,7 +40,7 @@ function trocarForm(primeiroForm, proximoForm) {
   }, 300);
 }
 //popUp
-function popUp(mensagem) {
+function popUp(mensagem, tempo) {
   const avisoElement = document.querySelector(".alertaJs");
   if (!avisoElement) {
     const elementoAviso = `<div class='alertaJs slide-in-top'><h2 class='popupJs'>${mensagem}!!</h2></div>`;
@@ -53,6 +52,6 @@ function popUp(mensagem) {
       elementoNoDom.addEventListener("animationend", () =>
         elementoNoDom.remove()
       );
-    }, 2000);
+    }, tempo);
   }
 }
