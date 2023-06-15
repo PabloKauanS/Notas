@@ -58,7 +58,7 @@
   color: #f79e89;
   cursor: pointer;
 }
-.senha {
+.senhaDetalhe {
   content: url(/icons/eye-off.svg);
   position: absolute;
   color: red;
@@ -69,6 +69,6 @@
   cursor: pointer;
   top: 90px;
 }
-.formulario.cadastro .senha {
+.formulario.cadastro .senhaDetalhe {
   top: 162px;
 }

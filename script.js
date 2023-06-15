@@ -25,7 +25,7 @@ document
   .addEventListener("submit", cadastro);
 function cadastro(e) {
   e.preventDefault();
-  popUp("Cadastro indisponível",1700);
+  popUp("Cadastro indisponível", 1700);
 }
 //Animação formulario
 function trocarForm(primeiroForm, proximoForm) {
@@ -55,3 +55,35 @@ function popUp(mensagem, tempo) {
     }, tempo);
   }
 }
+//Mostar Senha
+function initTrocarSenha() {
+  document.querySelectorAll(".senhaDetalhe").forEach((item) => {
+    item.addEventListener("click", () => mostarSenha(item));
+  });
+  function mostarSenha(item) {
+    const input =
+      item.parentElement.querySelector("#senha") ||
+      item.parentElement.querySelectorAll(
+        "#senhaCadastro, #senhaConfirmacaoCadastro"
+      );
+    switch (input.constructor.name) {
+      case "NodeList":
+        input.forEach((item) => {
+          if (item.attributes.type.value === "password") {
+            item.setAttribute("type", "text");
+          } else {
+            item.setAttribute("type", "password");
+          }
+        });
+        break;
+      case "HTMLInputElement":
+        if (input.attributes.type.value === "password") {
+          input.setAttribute("type", "text");
+        } else {
+          input.setAttribute("type", "password");
+        }
+        break;
+    }
+  }
+}
+initTrocarSenha();
