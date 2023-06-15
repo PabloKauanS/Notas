@@ -59,7 +59,7 @@
   cursor: pointer;
 }
 .senhaDetalhe {
-  content: url('/icons/eye-off.svg');
+  background-image: url("/icons/eye-off.svg");
   position: absolute;
   color: red;
   height: 24px;
