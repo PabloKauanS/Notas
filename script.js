@@ -1,5 +1,5 @@
 //Form Login
-document.querySelector(".formulario").addEventListener("submit", (e) => {
+document.querySelector(".formulario-js").addEventListener("submit", (e) => {
   e.preventDefault();
   const email = document.querySelector("#email").value.toLowerCase();
   const senha = document.querySelector("#senha").value;
@@ -21,12 +21,12 @@ document.querySelector(".formulario").addEventListener("submit", (e) => {
 });
 //Form Cadastro
 document
-  .querySelector(".formulario.cadastro")
-  .addEventListener("submit", cadastro);
-function cadastro(e) {
-  e.preventDefault();
-  popUp("Cadastro indisponível", 1700);
-}
+  .querySelector(".formularioCadastro-js")
+  .addEventListener("submit", (e) => {
+    e.preventDefault();
+    popUp("Cadastro indisponível", 1700);
+  });
+
 //Animação formulario
 function trocarForm(primeiroForm, proximoForm) {
   const atual = document.querySelector(primeiroForm);
@@ -41,13 +41,13 @@ function trocarForm(primeiroForm, proximoForm) {
 }
 //popUp
 function popUp(mensagem, tempo) {
-  const avisoElement = document.querySelector(".alertaJs");
+  const avisoElement = document.querySelector(".alerta-Js");
   if (!avisoElement) {
-    const elementoAviso = `<div class='alertaJs slide-in-top'><h2 class='popupJs'>${mensagem}!!</h2></div>`;
-    const gridCentral = document.querySelector(".grid-central");
+    const elementoAviso = `<div class='alerta-Js alerta slide-in-top'><h2 class='popup'>${mensagem}!!</h2></div>`;
+    const gridCentral = document.querySelector(".gridCentral-js");
     gridCentral.insertAdjacentHTML("beforebegin", elementoAviso);
     setTimeout(() => {
-      const elementoNoDom = document.querySelector(".alertaJs");
+      const elementoNoDom = document.querySelector(".alerta-Js");
       elementoNoDom.classList.replace("slide-in-top", "slide-out-top");
       elementoNoDom.addEventListener("animationend", () =>
         elementoNoDom.remove()
@@ -56,34 +56,33 @@ function popUp(mensagem, tempo) {
   }
 }
 //Mostar Senha
-function initTrocarSenha() {
-  document.querySelectorAll(".senhaDetalhe").forEach((item) => {
-    item.addEventListener("click", () => mostarSenha(item));
-  });
-  function mostarSenha(item) {
-    const input =
-      item.parentElement.querySelector("#senha") ||
-      item.parentElement.querySelectorAll(
-        "#senhaCadastro, #senhaConfirmacaoCadastro"
-      );
-    switch (input.constructor.name) {
-      case "NodeList":
-        input.forEach((item) => {
-          if (item.attributes.type.value === "password") {
-            item.setAttribute("type", "text");
-          } else {
-            item.setAttribute("type", "password");
-          }
-        });
-        break;
-      case "HTMLInputElement":
-        if (input.attributes.type.value === "password") {
-          input.setAttribute("type", "text");
+
+document.querySelectorAll(".detalhe-js").forEach((item) => {
+  item.addEventListener("click", () => mostarSenha(item));
+});
+
+function mostarSenha(item) {
+  const input =
+    item.parentElement.querySelector("#senha") ||
+    item.parentElement.querySelectorAll(
+      "#senhaCadastro, #senhaConfirmacaoCadastro"
+    );
+  switch (input.constructor.name) {
+    case "NodeList":
+      input.forEach((item) => {
+        if (item.attributes.type.value === "password") {
+          item.setAttribute("type", "text");
         } else {
-          input.setAttribute("type", "password");
+          item.setAttribute("type", "password");
         }
-        break;
-    }
+      });
+      break;
+    case "HTMLInputElement":
+      if (input.attributes.type.value === "password") {
+        input.setAttribute("type", "text");
+      } else {
+        input.setAttribute("type", "password");
+      }
+      break;
   }
 }
-initTrocarSenha();

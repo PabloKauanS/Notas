@@ -3,7 +3,7 @@
 }
 /*interação com js*/
 
-.alertaJs {
+.alerta {
   text-align: center;
   background-color: #f79e89;
   font-size: 16px;
@@ -11,7 +11,7 @@
   width: 100%;
   position: absolute;
 }
-.popupJs {
+.popup {
   color: white;
   font-family: "Montserrat", sans-serif;
 }

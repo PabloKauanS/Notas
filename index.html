@@ -13,24 +13,24 @@
 </head>
 
 <body>
-    <div class="grid-central">
+    <div class="grid-central gridCentral-js">
         <img src="icons/Union.svg" alt="Logo" class="logo">
-        <form action="" method="get" class="formulario">
+        <form action="" method="get" class="formulario formulario-js">
             <input type="email" name="email" id="email" placeholder="Email" required>
-            <span class="senhaDetalhe"></span>
+            <span class="senhaDetalhe detalhe-js"></span>
             <input type="password" name="senha" id="senha" placeholder="Senha" required minlength="6">
             <button class="esqueceuSenha" disabled>Esqueceu a senha ?</button>
             <button type="submit" class="entrar">Entrar</button>
-            <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formulario','.formulario.cadastro')">Crie uma</span></p>
+            <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formulario-js','.formularioCadastro-js')">Crie uma</span></p>
         </form>
-        <form action="" method="get" class="formulario cadastro">
+        <form action="" method="get" class="formulario cadastro formularioCadastro-js">
             <input type="email" name="email" id="emailCadastro" placeholder="Email" required>
             <input type="text" name="nome" id="nomeCadastro" placeholder="Nome" required pattern="^[a-zA-ZÀ-ÿ\s]+$">
-            <span class="senhaDetalhe"></span>
+            <span class="senhaDetalhe detalhe-js"></span>
             <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required minlength="6">
             <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required minlength="6">
             <button type="submit" class="entrar">Cadastrar</button>
-            <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formulario.cadastro','.formulario')">Entrar</span></p>
+            <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formularioCadastro-js','.formulario-js')">Entrar</span></p>
         </form>
     </div>
     <script src="script.js"></script>
