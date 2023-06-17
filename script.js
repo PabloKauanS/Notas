@@ -38,7 +38,6 @@ function initCadastro() {
         senha: inputSenha,
       };
       const verificarDados = dados.find((item) => usuario.email === item.email);
-      console.log(verificarDados);
       if (!verificarDados) {
         dados.push(usuario);
         sessionStorage.setItem("dados", JSON.stringify(dados));
@@ -81,30 +80,19 @@ function popUp(mensagem, tempo) {
 }
 //Mostar Senha
 document.querySelectorAll(".detalhe-js").forEach((item) => {
-  item.addEventListener("click", () => mostarSenha(item));
+  item.addEventListener("click", (e) => mostarSenha(e));
 });
-function mostarSenha(item) {
-  const input =
-    item.parentElement.querySelector("#senha") ||
-    item.parentElement.querySelectorAll(
-      "#senhaCadastro, #senhaConfirmacaoCadastro"
-    );
-  switch (input.constructor.name) {
-    case "NodeList":
-      input.forEach((item) => {
-        if (item.attributes.type.value === "password") {
-          item.setAttribute("type", "text");
-        } else {
-          item.setAttribute("type", "password");
-        }
-      });
-      break;
-    case "HTMLInputElement":
-      if (input.attributes.type.value === "password") {
-        input.setAttribute("type", "text");
-      } else {
-        input.setAttribute("type", "password");
-      }
-      break;
-  }
+function mostarSenha(event) {
+  const elemento = event.target;
+  const elementoPai = elemento.parentElement.parentElement;
+  const inputs = elementoPai.querySelectorAll(
+    "#senha, #senhaCadastro,#senhaConfirmacaoCadastro"
+  );
+  inputs.forEach((item) => {
+    if (item.type === "password") {
+      item.type = "text";
+    } else {
+      item.type = "password";
+    }
+  });
 }
