@@ -17,6 +17,7 @@
 .lista-dados-items-js {
   display: flex;
   padding: 0px 20px;
+  gap: 20px;
   justify-content: space-between;
   align-items: center;
 }
@@ -38,6 +39,6 @@
 }
 .email-js,
 .senha-js {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #f79e89;
 }
