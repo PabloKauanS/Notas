@@ -29,7 +29,7 @@
 }
 .detalheCirculo {
   position: absolute;
-  right: 16px;
+  right: 30px;
   bottom: 40px;
   -webkit-tap-highlight-color: transparent;
   z-index: 1;
@@ -43,4 +43,5 @@
 }
 .configuracao {
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }

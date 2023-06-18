@@ -1,0 +1,43 @@
+.config-user-js {
+  position: fixed;
+  z-index: 2;
+  bottom: 0px;
+  width: 100%;
+  height: calc(100% - 44px);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.texto-info-js {
+  color: #27272780;
+  font-size: 1.25rem;
+  padding: 16px 0px;
+}
+.lista-dados-items-js {
+  display: flex;
+  padding: 0px 20px;
+  justify-content: space-between;
+  align-items: center;
+}
+.botaoSair-js {
+  background: #f79e89;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 20px;
+  margin: 0px 20px;
+  border-radius: 12px;
+  letter-spacing: 5px;
+}
+.nome-js {
+  color: #f79e89;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.email-js,
+.senha-js {
+  font-size: 1.1rem;
+  color: #f79e89;
+}

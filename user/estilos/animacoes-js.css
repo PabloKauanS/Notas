@@ -1,0 +1,27 @@
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(1000px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slide-out-bottom {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(1000px);
+  }
+}
+
+@keyframes rotate-in-center {
+  0% {
+    transform: rotate(-360deg);
+
+  }
+  100% {
+    transform: rotate(0);
+
+  }
+}
