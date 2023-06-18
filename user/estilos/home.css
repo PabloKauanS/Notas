@@ -1,0 +1,46 @@
+.principal {
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.detalhesTopo {
+  display: flex;
+  justify-content: space-between;
+}
+.titulo {
+  text-transform: uppercase;
+  color: #f76c6a;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  display: flex;
+  gap: 10px;
+}
+.detalhes {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.detalhesDiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.detalheCirculo {
+  position: absolute;
+  right: 16px;
+  bottom: 40px;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 40px;
+  background-color: #f76c6a;
+}
+.conteudo {
+  overflow-y: scroll;
+  height: 88%;
+}
+.configuracao {
+  cursor: pointer;
+}

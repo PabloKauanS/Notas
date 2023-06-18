@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do List</title>
     <link rel="stylesheet" href="import.css">
+    <link rel="shortcut icon" href="icons/todolist-svgrepo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
@@ -18,17 +19,17 @@
         <form action="" method="get" class="formulario formulario-js">
             <input type="email" name="email" id="email" placeholder="Email" required>
             <span class="senhaDetalhe detalhe-js"><img src="icons/eye-off.svg"></span>
-            <input type="password" name="senha" id="senha" placeholder="Senha" required minlength="6">
+            <input type="password" name="senha" id="senha" placeholder="Senha" required minlength="6" maxlength="12">
             <button class="esqueceuSenha" disabled>Esqueceu a senha ?</button>
             <button type="submit" class="entrar">Entrar</button>
             <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formulario-js','.formularioCadastro-js')">Crie uma</span></p>
         </form>
         <form action="" method="get" class="formulario cadastro formularioCadastro-js">
             <input type="email" name="email" id="emailCadastro" placeholder="Email" required>
-            <input type="text" name="nome" id="nomeCadastro" placeholder="Nome" required>
+            <input type="text" name="nome" id="nomeCadastro" placeholder="Apelido" required>
             <span class="senhaDetalhe detalhe-js"><img src="icons/eye-off.svg"></span>
-            <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required minlength="6">
-            <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required minlength="6">
+            <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required minlength="6" maxlength="12">
+            <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required minlength="6" maxlength="12">
             <button type="submit" class="entrar">Cadastrar</button>
             <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formularioCadastro-js','.formulario-js')">Entrar</span></p>
         </form>

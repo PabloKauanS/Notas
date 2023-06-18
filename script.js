@@ -1,29 +1,33 @@
 //Form Login
-document.querySelector(".formulario-js").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const email = document.querySelector("#email").value.toLowerCase();
-  const senha = document.querySelector("#senha").value;
-  const dados =
-    JSON.parse(sessionStorage.getItem("dados")) ||
-    popUp("Nenhum email cadastrado", 2000);
-  if (dados) {
-    const emailCadastrado =
-      dados.find((item) => email === item.email) ||
-      popUp("Email não cadastrado", 1700);
-    if (emailCadastrado) {
-      if (senha === emailCadastrado.senha) {
-        window.location.href = "home.html";
-      } else {
-        popUp("Senha incorreta", 1700);
+function initLogin() {
+  const formLogin = document.querySelector(".formulario-js");
+  formLogin.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = document.querySelector("#email").value.toLowerCase();
+    const senha = document.querySelector("#senha").value;
+    const dados =
+      JSON.parse(localStorage.getItem("dados")) ||
+      popUp("Nenhum email cadastrado", 2000);
+    if (dados) {
+      const emailCadastrado =
+        dados.find((item) => email === item.email) ||
+        popUp("Email não cadastrado", 1700);
+      if (emailCadastrado) {
+        if (senha === emailCadastrado.senha) {
+          sessionStorage.setItem("user", JSON.stringify(emailCadastrado));
+          window.location.href = "user/home.html";
+        } else {
+          popUp("Senha incorreta", 1700);
+        }
       }
     }
-  }
-});
+  });
+}
+initLogin();
 //Form Cadastro
 function initCadastro() {
   const formCadast = document.querySelector(".formularioCadastro-js");
-  const dados = JSON.parse(sessionStorage.getItem("dados")) || [];
-
+  const dados = JSON.parse(localStorage.getItem("dados")) || [];
   formCadast.addEventListener("submit", (e) => {
     const inputEmail = document.querySelector("#emailCadastro").value;
     const inputNome = document.querySelector("#nomeCadastro").value;
@@ -40,12 +44,13 @@ function initCadastro() {
       const verificarDados = dados.find((item) => usuario.email === item.email);
       if (!verificarDados) {
         dados.push(usuario);
-        sessionStorage.setItem("dados", JSON.stringify(dados));
+        localStorage.setItem("dados", JSON.stringify(dados));
       } else {
         e.preventDefault();
         popUp("Email já cadastrado", 1500);
       }
     } else {
+      e.preventDefault();
       popUp("Senhas não coincidem", 1700);
     }
   });
@@ -79,20 +84,24 @@ function popUp(mensagem, tempo) {
   }
 }
 //Mostar Senha
-document.querySelectorAll(".detalhe-js").forEach((item) => {
-  item.addEventListener("click", (e) => mostarSenha(e));
-});
-function mostarSenha(event) {
-  const elemento = event.target;
-  const elementoPai = elemento.parentElement.parentElement;
-  const inputs = elementoPai.querySelectorAll(
-    "#senha, #senhaCadastro,#senhaConfirmacaoCadastro"
-  );
-  inputs.forEach((item) => {
-    if (item.type === "password") {
-      item.type = "text";
-    } else {
-      item.type = "password";
-    }
+function mostrarSenha() {
+  const detalhe = document.querySelectorAll(".detalhe-js");
+  detalhe.forEach((item) => {
+    item.addEventListener("click", (e) => mostarSenha(e));
   });
+  function mostarSenha(event) {
+    const elemento = event.target;
+    const elementoPai = elemento.parentElement.parentElement;
+    const inputs = elementoPai.querySelectorAll(
+      "#senha, #senhaCadastro,#senhaConfirmacaoCadastro"
+    );
+    inputs.forEach((item) => {
+      if (item.type === "password") {
+        item.type = "text";
+      } else {
+        item.type = "password";
+      }
+    });
+  }
 }
+mostrarSenha();
