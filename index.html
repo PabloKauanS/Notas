@@ -14,26 +14,27 @@
 </head>
 
 <body>
-    <div class="grid-central gridCentral-js">
+    <main class="grid-main gridMain-js">
         <img src="icons/Union.svg" alt="Logo" class="logo">
-        <form action="" method="get" class="formulario formulario-js">
+        <form action="" method="get" class="form form-js">
             <input type="email" name="email" id="email" placeholder="Email" required>
-            <span class="senhaDetalhe detalhe-js"><img src="icons/eye-off.svg"></span>
-            <input type="password" name="senha" id="senha" placeholder="Senha" required minlength="6" maxlength="12">
-            <button class="esqueceuSenha" disabled>Esqueceu a senha ?</button>
-            <button type="submit" class="entrar">Entrar</button>
-            <p class="cadastroTexto">Você não têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formulario-js','.formularioCadastro-js')">Crie uma</span></p>
+            <span class="passDetail detail-js"><img src="icons/eye-off.svg"></span>
+            <input type="password" name="pass" id="pass" placeholder="Senha" required minlength="6" maxlength="12">
+            <button class="passForgot" disabled>Esqueceu a Senha ?</button>
+            <button type="submit" class="login">Entrar</button>
+            <p class="registerText">Você não têm uma conta? <span class="registerDetail" onclick="switchForm('.form-js','.formRegister-js')">Crie uma</span></p>
         </form>
-        <form action="" method="get" class="formulario cadastro formularioCadastro-js">
-            <input type="email" name="email" id="emailCadastro" placeholder="Email" required>
-            <input type="text" name="nome" id="nomeCadastro" placeholder="Apelido" required>
-            <span class="senhaDetalhe detalhe-js"><img src="icons/eye-off.svg"></span>
-            <input type="password" name="senha" id="senhaCadastro" placeholder="Senha" required minlength="6" maxlength="12">
-            <input type="password" name="senha" id="senhaConfirmacaoCadastro" placeholder="Confirmar Senha" required minlength="6" maxlength="12">
-            <button type="submit" class="entrar">Cadastrar</button>
-            <p class="cadastroTexto">Você têm uma conta? <span class="cadastroDetalhe" onclick="trocarForm('.formularioCadastro-js','.formulario-js')">Entrar</span></p>
+
+        <form action="" method="get" class="form register formRegister-js">
+            <input type="email" name="email" id="emailRegister" placeholder="Email" required>
+            <input type="text" name="name" id="nameRegister" placeholder="Apelido" required>
+            <span class="passDetail detail-js"><img src="icons/eye-off.svg"></span>
+            <input type="password" name="pass" id="passRegister" placeholder="Senha" required minlength="6" maxlength="12">
+            <input type="password" name="passConfirm" id="passConfirmRegister" placeholder="Confirmar Senha" required minlength="6" maxlength="12">
+            <button type="submit" class="login">Cadastrar</button>
+            <p class="registerText">Você têm uma conta? <span class="registerDetail" onclick="switchForm('.formRegister-js','.form-js')">Entrar</span></p>
         </form>
-    </div>
+    </main>
     <script src="script.js"></script>
 </body>
 

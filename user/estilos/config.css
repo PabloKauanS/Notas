@@ -11,7 +11,7 @@
 }
 .texto-info-js {
   color: #27272780;
-  font-size: 1.25rem;
+  font-size: 1.063rem;
   padding: 16px 0px;
 }
 .lista-dados-items-js {
@@ -29,12 +29,14 @@
   text-transform: uppercase;
   padding: 20px;
   margin: 0px 20px;
+  cursor: pointer;
   border-radius: 12px;
   letter-spacing: 5px;
 }
 .nome-js {
   color: #f79e89;
   font-weight: 600;
+  text-transform: capitalize;
   font-size: 1.1rem;
 }
 .email-js,

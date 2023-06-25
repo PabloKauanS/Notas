@@ -1,4 +1,4 @@
-@import "estilos/reset.css";
-@import "estilos/login.css";
-@import "estilos/animacoes.css";
-@import "estilos/interacaoJs.css";
+@import "styles/reset.css";
+@import "styles/login.css";
+@import "styles/animation.css";
+@import "styles/interactionJs.css";

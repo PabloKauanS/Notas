@@ -1,4 +1,4 @@
-.grid-central {
+.grid-main {
   display: grid;
   align-items: center;
   height: 100%;
@@ -9,14 +9,14 @@
 .logo {
   justify-self: center;
 }
-.formulario {
+.form {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
   row-gap: 15px;
   padding: 0px 15px;
 }
-.formulario input {
+.form input {
   grid-column: 1/-1;
   padding: 20px;
   border-radius: 12px;
@@ -25,7 +25,7 @@
   letter-spacing: 2px;
   border: 1px solid #27272780;
 }
-.esqueceuSenha {
+.passForgot {
   grid-column: 2;
   border: none;
   justify-self: end;
@@ -35,7 +35,7 @@
   font-weight: 400;
   color: #27272780;
 }
-.entrar {
+.login {
   grid-column: 1/-1;
   border-radius: 12px;
   background: #f79e89;
@@ -47,18 +47,18 @@
   font-weight: 500;
   letter-spacing: 5px;
 }
-.cadastroTexto {
+.registerText {
   grid-column: 1/-1;
   text-align: center;
   font-family: "Montserrat", sans-serif;
   color: #27272766;
   font-weight: 400;
 }
-.cadastroDetalhe {
+.registerDetail {
   color: #f79e89;
   cursor: pointer;
 }
-.senhaDetalhe {
+.passDetail {
   position: absolute;
   height: 24px;
   width: 24px;
@@ -67,6 +67,6 @@
   cursor: pointer;
   top: 90px;
 }
-.cadastro .senhaDetalhe {
+.register .passDetail {
   top: 162px;
 }

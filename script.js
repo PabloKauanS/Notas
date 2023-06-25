@@ -1,107 +1,136 @@
 //Form Login
 function initLogin() {
-  const formLogin = document.querySelector(".formulario-js");
-  formLogin.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const email = document.querySelector("#email").value.toLowerCase();
-    const senha = document.querySelector("#senha").value;
-    const dados =
-      JSON.parse(localStorage.getItem("dados")) ||
-      popUp("Nenhum email cadastrado", 2000);
-    if (dados) {
-      const emailCadastrado =
-        dados.find((item) => email === item.email) ||
-        popUp("Email não cadastrado", 1700);
-      if (emailCadastrado) {
-        if (senha === emailCadastrado.senha) {
-          sessionStorage.setItem("user", JSON.stringify(emailCadastrado));
-          window.location.href = "user/home.html";
-        } else {
-          popUp("Senha incorreta", 1700);
-        }
-      }
-    }
-  });
-}
-initLogin();
-//Form Cadastro
-function initCadastro() {
-  const formCadast = document.querySelector(".formularioCadastro-js");
-  const dados = JSON.parse(localStorage.getItem("dados")) || [];
-  formCadast.addEventListener("submit", (e) => {
-    const inputEmail = document.querySelector("#emailCadastro").value;
-    const inputNome = document.querySelector("#nomeCadastro").value;
-    const inputSenha = document.querySelector("#senhaCadastro").value;
-    const inputSenhaConfir = document.querySelector(
-      "#senhaConfirmacaoCadastro"
-    ).value;
-    if (inputSenha === inputSenhaConfir) {
-      const usuario = {
-        nome: inputNome,
-        email: inputEmail,
-        senha: inputSenha,
-      };
-      const verificarDados = dados.find((item) => usuario.email === item.email);
-      if (!verificarDados) {
-        dados.push(usuario);
-        localStorage.setItem("dados", JSON.stringify(dados));
-      } else {
-        e.preventDefault();
-        popUp("Email já cadastrado", 1500);
-      }
-    } else {
+  const formLogin = document.querySelector(".form-js");
+  if (formLogin) {
+    formLogin.addEventListener("submit", (e) => {
       e.preventDefault();
-      popUp("Senhas não coincidem", 1700);
-    }
-  });
-}
-initCadastro();
-
-//Animação formulario
-function trocarForm(primeiroForm, proximoForm) {
-  const atual = document.querySelector(primeiroForm);
-  const proximo = document.querySelector(proximoForm);
-  atual.classList.add("slide-out-left");
-  setTimeout(() => {
-    atual.classList.remove("slide-out-left");
-    atual.style.display = "none";
-    proximo.classList.add("slide-in-right");
-    proximo.style.display = "grid";
-  }, 300);
-}
-//popUp
-function popUp(mensagem, tempo) {
-  const avisoElement = document.querySelector(".alerta-Js");
-  if (!avisoElement) {
-    const elementoAviso = `<div class='alerta-Js alerta slide-in-top'><h2 class='popup'>${mensagem}!!</h2></div>`;
-    const gridCentral = document.querySelector(".gridCentral-js");
-    gridCentral.insertAdjacentHTML("beforebegin", elementoAviso);
-    setTimeout(() => {
-      const elementoDom = document.querySelector(".alerta-Js");
-      elementoDom.classList.replace("slide-in-top", "slide-out-top");
-      elementoDom.addEventListener("animationend", () => elementoDom.remove());
-    }, tempo);
-  }
-}
-//Mostar Senha
-function mostrarSenha() {
-  const detalhe = document.querySelectorAll(".detalhe-js");
-  detalhe.forEach((item) => {
-    item.addEventListener("click", (e) => mostarSenha(e));
-  });
-  function mostarSenha(event) {
-    const elemento = event.target;
-    const elementoPai = elemento.parentElement.parentElement;
-    const inputs = elementoPai.querySelectorAll(
-      "#senha, #senhaCadastro,#senhaConfirmacaoCadastro"
-    );
-    inputs.forEach((item) => {
-      if (item.type === "password") {
-        item.type = "text";
+      const loginData = new GetData();
+      const dataStorage = JSON.parse(localStorage.getItem("data"));
+      if (dataStorage) {
+        checkEmail(loginData, dataStorage);
       } else {
-        item.type = "password";
+        popUp("Nenhum email cadastrado", 1700);
       }
     });
   }
+  function GetData() {
+    this.email = document.querySelector("#email").value.toLowerCase();
+    this.pass = document.querySelector("#pass").value;
+  }
+  function checkEmail(loginData, dataStorage) {
+    const emailSearch = dataStorage.find(
+      (item) => item.email === loginData.email
+    );
+    if (emailSearch) {
+      confirmPass(emailSearch, loginData.pass);
+    } else {
+      popUp("Email não cadastrado", 1500);
+    }
+  }
+  function confirmPass(emailSearch, loginDataPass) {
+    if (emailSearch.pass === loginDataPass) {
+      sessionStorage.setItem("user", JSON.stringify(emailSearch));
+      location.href = "user/home.html";
+    } else {
+      popUp("Senha incorreta", 1300);
+    }
+  }
 }
-mostrarSenha();
+initLogin();
+//Form Register
+function initRegister() {
+  const formRegister = document.querySelector(".formRegister-js");
+  formRegister.addEventListener("submit", (event) => {
+    const inputAll = formRegister.querySelectorAll("input");
+    const inputsData = assembleData(inputAll);
+    const loginData = JSON.parse(localStorage.getItem("data")) || [];
+    if (inputsData.pass === inputsData.passConfirm) {
+      checkData(loginData, inputsData, event);
+    } else {
+      event.preventDefault();
+      popUp("Senhas não coincidem", 1500);
+    }
+  });
+  function assembleData(inputAll) {
+    const dataRegister = Array.prototype.reduce.call(
+      inputAll,
+      (acc, item) => {
+        const inputName = item.name;
+        const inputValue = item.value;
+        acc[inputName] = inputValue;
+        return acc;
+      },
+      {}
+    );
+    return dataRegister;
+  }
+  function checkData(loginData, inputsData, event) {
+    const findData = loginData.find((item) => item.email === inputsData.email);
+    if (findData) {
+      event.preventDefault();
+      return popUp("Email já cadastrado", 1500);
+    } else {
+      delete inputsData.passConfirm;
+      loginData.push(inputsData);
+      localStorage.setItem("data", JSON.stringify(loginData));
+    }
+  }
+}
+initRegister();
+//Switch Form
+function switchForm(currentForm, nextForm) {
+  const currentFormElement = document.querySelector(currentForm);
+  const nextFormElement = document.querySelector(nextForm);
+  currentFormElement.classList.add("slide-out-left");
+  setTimeout(animatioForm, 400);
+  function animatioForm() {
+    currentFormElement.classList.remove("slide-out-left");
+    currentFormElement.style.display = "none";
+    nextFormElement.classList.add("slide-in-right");
+    nextFormElement.style.display = "grid";
+  }
+}
+//PopUp
+function popUp(messageAlert, timepopUp) {
+  let elementAlertDom = document.querySelector(".alert-js");
+  if (!elementAlertDom) {
+    const elementDom = createElement(messageAlert);
+    const grindMain = document.querySelector(".gridMain-js");
+    grindMain.insertAdjacentHTML("beforebegin", elementDom);
+    setTimeout(removeElement, timepopUp);
+  }
+  function createElement(messageAlert) {
+    return `<div class='alert-js slide-in-top'><h2 class='popup'>${messageAlert}!!</h2></div>`;
+  }
+  function removeElement() {
+    elementAlertDom = document.querySelector(".alert-js");
+    elementAlertDom.classList.replace("slide-in-top", "slide-out-top");
+    elementAlertDom.addEventListener("animationend", () =>
+      elementAlertDom.remove()
+    );
+  }
+}
+//Show pass
+function initShowPass() {
+  const detailsButton = document.querySelectorAll(".detail-js");
+  detailsButton.forEach((item) => {
+    item.addEventListener("click", (event) => {
+      showPass(event);
+    });
+  });
+  function showPass(event) {
+    const element = event.target;
+    const parentElement = element.parentElement.parentElement;
+    const inputsElement = parentElement.querySelectorAll(
+      "#pass,#passRegister,#passConfirmRegister"
+    );
+    inputsElement.forEach((item)=>{
+      if(item.type === 'password'){
+        item.type = 'text'
+      }else{
+        item.type = 'password'
+      }
+    })
+  }
+}
+initShowPass();

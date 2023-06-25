@@ -1,9 +1,8 @@
-.formulario.cadastro {
+.form.register {
   display: none;
 }
 /*interação com js*/
-
-.alerta {
+.alert-js {
   text-align: center;
   background-color: #f79e89;
   font-size: 16px;
