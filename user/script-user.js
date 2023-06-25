@@ -1,40 +1,49 @@
-if (sessionStorage.getItem("user")) {
-  const dadosUser = JSON.parse(sessionStorage.getItem("user"));
-  document.head.querySelector("title").innerText =
-    dadosUser.nome[0].toUpperCase() + dadosUser.nome.substring(1).split(" ")[0];
-  abrirConfig();
-  function abrirConfig() {
-    const configuracao = document.querySelector(".configuracao");
-    const domPrincipal = document.querySelector(".principal");
-    configuracao.addEventListener("click", () => {
-      const configDom = document.querySelector(".config-user-js");
-      if (!configDom) {
-        const configDomElemnt = `<div class='config-user-js slide-in-bottom'><img src='icons/rafiki.svg'><ul class='lista-dados-js'><li class='lista-dados-items-js'><p class='texto-info-js'>Apelido</p><span class='nome-js'>${dadosUser.nome}</span></li><li class='lista-dados-items-js'><p class='texto-info-js'>Email</p><span class='email-js'>${dadosUser.email}</span></li><li class='lista-dados-items-js'><p class='texto-info-js'>Senha</p><span class='senha-js'>Trocar Senha</span></li></ul><button class='botaoSair-js'>Sair</button></div>`;
-        configuracao.classList.add("rotate-in-center");
-        domPrincipal.insertAdjacentHTML("afterend", configDomElemnt);
-        //apagar depois
-        document
-          .querySelector(".botaoSair-js")
-          .addEventListener("click", () => {
-            sessionStorage.clear();
-            localStorage.clear();
-            window.history.back();
-          });
-        //
-      } else {
-        configuracao.classList.remove("rotate-in-center");
-        configDom.classList.replace("slide-in-bottom", "slide-out-bottom");
-        configDom.addEventListener("animationend", () => configDom.remove());
-      }
-    });
+const dataUser = JSON.parse(sessionStorage.getItem("user"));
+if (dataUser) {
+  //Show Name
+  function initNameTitle() {
+    const htmlHead = document.head.querySelector("title");
+    const userName = dataUser.name;
+    htmlHead.innerText = assembleName(userName);
+    function assembleName(userName) {
+      return userName[0].toUpperCase() + userName.substring(1).split(" ")[0];
+    }
   }
+  initNameTitle();
 
-  adicionarNotas();
-  function adicionarNotas() {
-    const botaoAdicionar = document.querySelector(".detalheCirculo");
-    botaoAdicionar.addEventListener("click", () => {});
+  //Open Setting
+  function initSettingOpen() {
+    const settingDom = document.querySelector(".setting");
+    const mainDom = document.querySelector(".main");
+    settingDom.addEventListener("click", openSetting);
+    function openSetting() {
+      let settingDomElement = document.querySelector(".setting-user-js");
+      if (!settingDomElement) {
+        const settingElement = createElement(dataUser);
+        settingDom.classList.add("rotate-in-center");
+        mainDom.insertAdjacentHTML("afterend", settingElement);
+      } else {
+        settingDom.classList.remove("rotate-in-center");
+        removeElement();
+      }
+    }
+    function removeElement() {
+      settingDomElement = document.querySelector(".setting-user-js");
+      settingDomElement.classList.replace(
+        "slide-in-bottom",
+        "slide-out-bottom"
+      );
+      settingDomElement.addEventListener("animationend", () =>
+        settingDomElement.remove()
+      );
+    }
+    function createElement(dataUser) {
+      return `<div class='setting-user-js slide-in-bottom'><img src='icons/rafiki.svg'><ul class='listData-js'><li class='listData-item-js'><p class='text-info-js'>Apelido</p><span class='name-js'>${dataUser.name}</span></li><li class='listData-item-js'><p class='text-info-js'>Email</p><span class='email-js'>${dataUser.email}</span></li><li class='listData-item-js'><p class='text-info-js'>Senha</p><span class='pass-js'>Trocar Senha</span></li></ul><button class='button-js'>Sair</button></div>`;
+    }
   }
+  initSettingOpen();
+ 
 } else {
+  document.querySelector(".main").style.display = "none";
   alert("Você não está logado");
-  document.querySelector(".principal").style.display = "none";
 }

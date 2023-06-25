@@ -1,14 +1,14 @@
-.principal {
+.main {
   padding: 20px;
   position: relative;
   overflow: hidden;
   height: 100%;
 }
-.detalhesTopo {
+.detailTop {
   display: flex;
   justify-content: space-between;
 }
-.titulo {
+.title {
   text-transform: uppercase;
   color: #f76c6a;
   font-family: "Bebas Neue", sans-serif;
@@ -17,17 +17,17 @@
   display: flex;
   gap: 10px;
 }
-.detalhes {
+.detail {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
 }
-.detalhesDiv {
+.detailDiv {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-.detalheCirculo {
+.detailCircle {
   position: absolute;
   right: 30px;
   bottom: 40px;
@@ -37,11 +37,11 @@
   border-radius: 40px;
   background-color: #f76c6a;
 }
-.conteudo {
+.content {
   overflow-y: scroll;
   height: 88%;
 }
-.configuracao {
+.setting {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }

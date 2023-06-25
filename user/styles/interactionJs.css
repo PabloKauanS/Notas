@@ -7,3 +7,6 @@
 .rotate-in-center {
   animation: rotate-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
+.rotate-in-center-reveser {
+  animation: rotate-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse both;
+}
