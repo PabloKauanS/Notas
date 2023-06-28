@@ -1,0 +1,55 @@
+.notation-js {
+  z-index: 1;
+  bottom: 0px;
+  width: 100%;
+  position: fixed;
+  height: calc(100% - 62px);
+  background-color: #f79e89;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+.notation-js :focus {
+  outline: 0;
+}
+.notationForm-js {
+  display: flex;
+  gap: 16px;
+  padding: 20px;
+  flex-direction: column;
+  height: 100%;
+}
+.notationForm-js input,
+#description {
+  border-radius: 12px;
+  border: 2px solid #fff;
+  padding: 15px;
+  background: #f79e89;
+  color: #fff;
+}
+.notationForm-js ::placeholder {
+  color: #fff;
+  font-family: "Montserrat", s;
+}
+#description {
+  height: 100%;
+}
+.notationDetail-js {
+  margin: 0 auto;
+  display: block;
+  height: 6px;
+  width: 80px;
+  background-color: #fff;
+  margin-top: 16px;
+  border-radius: 3px;
+}
+.notationButton-js {
+  background-color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 0px;
+  color: #f79e89;
+  font-family: "Montserrat";
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
