@@ -47,7 +47,7 @@ if (dataUser) {
   //Exit
   function initExit() {
     sessionStorage.clear();
-    window.history.back();
+    window.location.href = "/index.html";
   }
   //Add notes
   function initNotation() {
@@ -57,18 +57,40 @@ if (dataUser) {
       const mainDom = document.querySelector(".main");
       const elementNotation = noteElement();
       mainDom.insertAdjacentHTML("afterend", elementNotation);
-    }
-    function noteElement() {
-      return `<div class="notation-js slide-in-bottom">
-      <span class="notationDetail-js"></span>
-      <form action="" method="get" class="notationForm-js">
-          <input type="text" placeholder="Título" id="title" name='title'>
-          <textarea name="description" id="description" placeholder="Descrição" cols="30" rows="10"></textarea>
-          <input type="date" name="date" id="date" disabled>
-          <input type="time" id="time" disabled>
-          <button class="notationButton-js">Adicionar</button>
-      </form>
-  </div>`;
+      function noteElement() {
+        return `<div class="notation-js slide-in-bottom">
+        <span class="notationDetail-js"></span>
+        <form action="" method="get" class="notationForm-js">
+            <input type="text" placeholder="Título" id="title" name='title'>
+            <textarea name="description" id="description" placeholder="Descrição" cols="30" rows="10"></textarea>
+            <input type="date" name="date" id="date" disabled>
+            <input type="time" id="time" disabled>
+            <button class="notationButton-js">Adicionar</button>
+        </form>
+    </div>`;
+      }
+      //drag elemento
+      const notation = document.querySelector(".notation-js");
+      let interval, buttonPressed;
+      notation.addEventListener("mousedown", dragElement);
+      function dragElement() {
+        if (!buttonPressed) {
+          buttonPressed = true;
+          interval = setInterval(function () {
+            window.addEventListener("mousemove", mouseMove);
+          }, 100);
+        }
+      }
+      function mouseMove(e) {
+        const mousePosition = (e.y += -20);
+        notation.style.top = `${mousePosition}px`;
+      }
+      notation.addEventListener("mouseup", stopDragElement);
+      function stopDragElement() {
+        buttonPressed = false;
+        window.removeEventListener("mousemove", mouseMove);
+        clearInterval(interval);
+      }
     }
   }
   initNotation();
