@@ -1,6 +1,6 @@
 .notation-js {
   z-index: 1;
-  bottom: 0px;
+  top: 63px;
   width: 100%;
   position: fixed;
   height: calc(100% - 62px);

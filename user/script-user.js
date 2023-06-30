@@ -47,7 +47,7 @@ if (dataUser) {
   //Exit
   function initExit() {
     sessionStorage.clear();
-    window.location.href = "/index.html";
+    notation.location.href = "/index.html";
   }
   //Add notes
   function initNotation() {
@@ -70,25 +70,43 @@ if (dataUser) {
     </div>`;
       }
       //drag elemento
-      const notation = document.querySelector(".notation-js");
+      const notationElement = document.querySelector(".notation-js");
       let interval, buttonPressed;
-      notation.addEventListener("mousedown", dragElement);
+      notationElement.addEventListener("touchstart", dragElement);
       function dragElement() {
         if (!buttonPressed) {
           buttonPressed = true;
-          interval = setInterval(function () {
-            window.addEventListener("mousemove", mouseMove);
+          interval = setInterval(() => {
+            notationElement.addEventListener("touchmove", touchMove);
           }, 100);
         }
       }
-      function mouseMove(e) {
-        const mousePosition = (e.y += -20);
-        notation.style.top = `${mousePosition}px`;
+      function touchMove(e) {
+        const toucheEvent = e.touches[0].clientY - 10;
+        const maxElementBott = (window.innerHeight * 80) / 100;
+        if (toucheEvent < 30 || toucheEvent > maxElementBott) {
+          return removeElement();
+        }
+        if (toucheEvent > 62 && toucheEvent < maxElementBott) {
+          return (notationElement.style.top = `${toucheEvent}px`);
+        }
+        function removeElement() {
+          notationElement.classList.replace(
+            "slide-in-bottom",
+            "slide-out-bottom"
+          );
+          notationElement.addEventListener("animationend", () =>
+            notationElement.remove()
+          );
+        }
       }
-      notation.addEventListener("mouseup", stopDragElement);
+      notationElement.addEventListener("touchend", stopDragElement);
       function stopDragElement() {
         buttonPressed = false;
-        window.removeEventListener("mousemove", mouseMove);
+        if (!notationElement.classList.contains("slide-out-bottom")) {
+          notationElement.style.top = `63px`;
+        }
+        notationElement.removeEventListener("touchmove", touchMove);
         clearInterval(interval);
       }
     }

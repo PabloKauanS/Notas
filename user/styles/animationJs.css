@@ -14,14 +14,11 @@
     transform: translateY(1000px);
   }
 }
-
 @keyframes rotate-in-center {
   0% {
     transform: rotate(-360deg);
-
   }
   100% {
     transform: rotate(0);
-
   }
 }
