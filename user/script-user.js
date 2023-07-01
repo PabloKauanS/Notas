@@ -47,7 +47,7 @@ if (dataUser) {
   //Exit
   function initExit() {
     sessionStorage.clear();
-    notation.location.href = "/index.html";
+    window.location.href = "./index.html";
   }
   //Add notes
   function initNotation() {
@@ -59,7 +59,9 @@ if (dataUser) {
       mainDom.insertAdjacentHTML("afterend", elementNotation);
       function noteElement() {
         return `<div class="notation-js slide-in-bottom">
+        <div class='notationClose-js'>
         <span class="notationDetail-js"></span>
+        </div>
         <form action="" method="get" class="notationForm-js">
             <input type="text" placeholder="Título" id="title" name='title'>
             <textarea name="description" id="description" placeholder="Descrição" cols="30" rows="10"></textarea>
@@ -70,44 +72,38 @@ if (dataUser) {
     </div>`;
       }
       //drag elemento
-      const notationElement = document.querySelector(".notation-js");
-      let interval, buttonPressed;
-      notationElement.addEventListener("touchstart", dragElement);
-      function dragElement() {
-        if (!buttonPressed) {
-          buttonPressed = true;
-          interval = setInterval(() => {
-            notationElement.addEventListener("touchmove", touchMove);
-          }, 100);
-        }
-      }
-      function touchMove(e) {
-        const toucheEvent = e.touches[0].clientY - 10;
-        const maxElementBott = (window.innerHeight * 80) / 100;
-        if (toucheEvent < 30 || toucheEvent > maxElementBott) {
+      const notationClose = document.querySelector(".notationClose-js");
+      const notationCloseParent = notationClose.parentElement;
+      const maxElementBott = (window.innerHeight * 80) / 100;
+      let touchY;
+      notationClose.addEventListener("touchmove", (event) => {
+        handletouchStart(event, maxElementBott);
+      });
+      function handletouchStart(event, maxElementBott) {
+        touchY = event.touches[0].clientY;
+        if (touchY < 30) {
           return removeElement();
         }
-        if (toucheEvent > 62 && toucheEvent < maxElementBott) {
-          return (notationElement.style.top = `${toucheEvent}px`);
-        }
-        function removeElement() {
-          notationElement.classList.replace(
-            "slide-in-bottom",
-            "slide-out-bottom"
-          );
-          notationElement.addEventListener("animationend", () =>
-            notationElement.remove()
-          );
+        if (touchY > 62 && touchY < maxElementBott) {
+          notationCloseParent.style.top = `${touchY}px`;
+        } else {
+          removeElement();
         }
       }
-      notationElement.addEventListener("touchend", stopDragElement);
-      function stopDragElement() {
-        buttonPressed = false;
-        if (!notationElement.classList.contains("slide-out-bottom")) {
-          notationElement.style.top = `63px`;
+      notationClose.addEventListener("touchend", handletouchEnd);
+      function handletouchEnd() {
+        if (!notationCloseParent.classList.contains("slide-out-bottom")) {
+          notationCloseParent.style.top = `63px`;
         }
-        notationElement.removeEventListener("touchmove", touchMove);
-        clearInterval(interval);
+      }
+      function removeElement() {
+        notationCloseParent.classList.replace(
+          "slide-in-bottom",
+          "slide-out-bottom"
+        );
+        notationCloseParent.addEventListener("animationend", () =>
+          notationCloseParent.remove()
+        );
       }
     }
   }

@@ -35,12 +35,11 @@
 }
 .notationDetail-js {
   margin: 0 auto;
+  border-radius: 3px;
   display: block;
   height: 6px;
   width: 80px;
   background-color: #fff;
-  margin-top: 16px;
-  border-radius: 3px;
 }
 .notationButton-js {
   background-color: #fff;
@@ -52,4 +51,11 @@
   letter-spacing: 4px;
   text-transform: uppercase;
   margin-bottom: 24px;
+}
+.notationClose-js {
+  background: #eda796;
+  height: 30px;
+  padding-top: 10px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
