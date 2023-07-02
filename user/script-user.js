@@ -47,7 +47,7 @@ if (dataUser) {
   //Exit
   function initExit() {
     sessionStorage.clear();
-    window.location.href = "./index.html";
+    window.location.href = "index.html";
   }
   //Add notes
   function initNotation() {
@@ -76,26 +76,9 @@ if (dataUser) {
       const notationCloseParent = notationClose.parentElement;
       const maxElementBott = (window.innerHeight * 80) / 100;
       let touchY;
-      notationClose.addEventListener("touchmove", (event) => {
-        handletouchStart(event, maxElementBott);
+      notationClose.addEventListener("click", (event) => {
+        removeElement();
       });
-      function handletouchStart(event, maxElementBott) {
-        touchY = event.touches[0].clientY;
-        if (touchY < 30) {
-          return removeElement();
-        }
-        if (touchY > 62 && touchY < maxElementBott) {
-          notationCloseParent.style.top = `${touchY}px`;
-        } else {
-          removeElement();
-        }
-      }
-      notationClose.addEventListener("touchend", handletouchEnd);
-      function handletouchEnd() {
-        if (!notationCloseParent.classList.contains("slide-out-bottom")) {
-          notationCloseParent.style.top = `63px`;
-        }
-      }
       function removeElement() {
         notationCloseParent.classList.replace(
           "slide-in-bottom",
