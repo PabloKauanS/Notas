@@ -47,7 +47,7 @@ if (dataUser) {
   //Exit
   function initExit() {
     sessionStorage.clear();
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
   }
   //Add notes
   function initNotation() {
